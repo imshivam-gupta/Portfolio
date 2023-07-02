@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import AnimatedText from '@/components/AnimatedText'
 import { GithubIcon } from '@/components/Icons'
-import project1 from '../../public/proj2.png'
-import project2 from '../../public/proj3.png'
+import project1 from '../../../public/proj2.png'
+import project2 from '../../../public/proj3.png'
 import { motion } from 'framer-motion'
 import TransitionEffect from '@/components/TransitionEffect'
 
@@ -109,7 +109,7 @@ const projects = () => {
                             githubweb='https://github.com/imshivam-gupta/Techspark-Website'
                             githubapp='https://github.com/imshivam-gupta/React-Native-Techspark'
                             type='Featured Project'
-                            details_link=''
+                            details_link='projects/techspark'
                         />
                     </div>
                     <div className='col-span-6 sm:col-span-12'>
