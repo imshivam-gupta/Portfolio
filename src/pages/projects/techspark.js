@@ -1,10 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
-import AnimatedText from '@/components/AnimatedText'
-import { GithubIcon } from '@/components/Icons'
 import project1 from '../../../public/techspark-cover.png'
-
 import { motion } from 'framer-motion'
 import TransitionEffect from '@/components/TransitionEffect'
 
@@ -40,69 +36,6 @@ const projects = () => {
 
     const FramerImage = motion(Image)
 
-    // const FeaturedProject = ({type, title, summary, img, link, githubweb,githubapp,details_link}) => {
-    //     return(
-    //         <article className='relative rounded-br-2xl w-full flex items-center justify-between rounded-3xl border border-solid border-dark 
-    //             bg-light shadow-2xl px-12 py-6 dark:bg-dark dark:border-light
-    //             lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4'
-    //         >
-    //             <div className='absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-3xl xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]'/>
-                
-
-    //             <div className='w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-6 ml-6'>
-    //                 <span className='text-primary dark:text-primaryDark font-medium text-xl xs:text-base'>{type}</span>
-    //                 <Link href={link} target='_blank' className='hover:underline underline-offset-2'>
-    //                     <h2 className='my-2 w-full text-left text-4xl font-bold dark:text-light sm:text-sm'>{title}</h2>
-    //                 </Link>
-    //                 <p className='my-2 font-medium text-dark dark:text-light sm:text-sm'>{summary}</p>
-    //                 <div className='mt-2 flex items-center w-full'>
-    //                     <div className='w-10 mr-6 flex flex-col'>
-    //                         <Link href={githubweb} target='_blank' className='w-10 mr-4 '>{" "}<GithubIcon /></Link>
-    //                         <h3 className='text-md my-1'>Web</h3>
-    //                     </div>
-    //                     <div className='w-10 mr-4 flex flex-col'>
-    //                         <Link href={githubapp} target='_blank' className='w-10 mr-4 '>{" "}<GithubIcon /></Link>
-    //                         <h3 className='text-md my-1'>App</h3>
-    //                     </div>
-                        
-              
-    //                     <Link href={link} target='_blank' className='ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold 
-    //                         dark:bg-light dark:text-dark sm:px-4 sm:text-base'
-    //                     >Visit Website</Link>
-
-    //                     <Link className='ml-auto mr-4' href={details_link}>Details</Link>
-    //                 </div>
-    //             </div>
-    //         </article>
-    //     )
-    // }
-
-    // const Project = ({title, type, img, link, github}) => {
-    //     return (
-    //         <article className='w-full flex flex-col items-center justify-center rounded-2xl border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light
-    //             xs:p-4'
-    //         >
-    //             <div className='absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark dark:bg-light rounded-br-3xl md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]'/>
-    //             <Link href={link} target='_blank' className='w-full cursor-pointer overflow-hidden rounded-lg'>
-    //                 <FramerImage src={img} alt={title} className='w-full h-auto' 
-    //                     whileHover={{scale:1.05}}
-    //                     transition={{duration:0.2}}
-    //                 />
-    //             </Link>
-
-    //             <div className='w-full flex flex-col items-start justify-between mt-4'>
-    //                 <span className='text-primary dark:text-primaryDark font-medium text-xl lg:text-lg md:text-base'>{type}</span>
-    //                 <Link href={link} target='_blank' className='hover:underline underline-offset-2'>
-    //                     <h2 className='my-2 w-full text-left text-3xl font-bold lg:text-2xl'>{title}</h2>
-    //                 </Link>
-    //                 <div className='w-full mt-2 flex items-center justify-between'>
-    //                     <Link href={link} target='_blank' className='text-lg font-semibold underline md:text-base'>Visit</Link>
-    //                     <Link href={github} target='_blank' className='w-8 md:w-6'><GithubIcon />{" "}</Link>
-    //                 </div>
-    //             </div>
-    //         </article>
-    //     )
-    // }
 
   return (
     <>
@@ -223,13 +156,22 @@ const projects = () => {
                             }
                     </motion.h1>
 
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        className='mt-6'
+                        src="https://www.youtube.com/embed/6fgTAOIYMFU?autoplay=1&mute=1" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+          
+
                  
                 </div>
                    
             </div>
-          
-
-                
+            
                
             </div>
         </main>
