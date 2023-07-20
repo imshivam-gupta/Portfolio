@@ -55,7 +55,7 @@ export default function Home() {
                 hover:dark:border-light md:p-2 md:px-4 md:text-base"
                   download={true}
                 >
-                  Resume <LinkArrow className="w-6 ml-1" />
+                  Resume <LinkArrow className="w-6" />
                 </Link>
                 <Link
                   href="mailto:shivamggupta2003@gmail.com"
