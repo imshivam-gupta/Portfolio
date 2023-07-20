@@ -7,7 +7,7 @@ This repository contains the source code for my personal portfolio website built
 ###### Check out the live version of the portfolio website here - [Link](https://shivam-gupta.vercel.app/ "Link")
 
 ## Technologies Used
-- ** Next.js -** A React framework for building server-side rendered and statically generated applications.
+- **Next.js -** A React framework for building server-side rendered and statically generated applications.
 - **Tailwind CSS -** A utility-first CSS framework for rapid UI development.
 - **React -** A JavaScript library for building user interfaces.
 
