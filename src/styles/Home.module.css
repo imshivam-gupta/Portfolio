@@ -280,4 +280,12 @@
   }
 }
 
+.prose li{
+  color: #5a5a5a;
+}
+
+.prose li.dark{
+  color: #fff;
+}
+
 
