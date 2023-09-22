@@ -1,9 +1,11 @@
 import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
-import getPostMetadata from "../../../components/posts/getPostMetadata";
+import getPostMetadata from "../../../../components/posts/getPostMetadata";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 
 const MyElement = ({ children, ...props }) => <div {...props}>{children}</div>
@@ -33,22 +35,59 @@ const MyInlineCode = ({ children, ...props }) => <code {...props}>{children}</co
 const MyCode = ({ children, ...props }) => <pre {...props}>{children}</pre>
 const MyHorizontalRule = ({ children, ...props }) => <hr {...props}>{children}</hr>
 
+
+const CodeBlock = ({ className, children }) => {
+  const language = className.replace("lang-", "");
+  return (
+    <div className="codeBlock">
+      <SyntaxHighlighter language={language.toLowerCase()} style={docco}>
+        {children}
+      </SyntaxHighlighter>
+    </div>
+  );
+}
+
+const PreBlock = ({children, ...rest}) => {
+  if ('type' in children && children ['type'] === 'code') {
+    return CodeBlock(children['props']);
+  }
+  return <pre {...rest}>{children}</pre>;
+};
+
 const Sidebar = ({ posts, selectedSlug }) => {
   const router = useRouter();
+
+  // Group posts by topic
+  const groupedPosts = posts.reduce((acc, post) => {
+    if (!acc[post.topic]) {
+      acc[post.topic] = [];
+    }
+    acc[post.topic].push(post);
+    return acc;
+  }, {});
+
   return (
     <div className="bg-gray-200 dark:bg-gray-800 w-[20vw] p-4">
-      <h3 className="text-xl font-bold mb-4">Post Slugs</h3>
       <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <button
-              onClick={() => router.push(`/posts/${post.slug}/page`)}
-              className={`w-full text-left text-blue-500 hover:underline ${
-                post.slug === selectedSlug ? "font-bold" : ""
-              }`}
-            >
-              {post.slug}
-            </button>
+        {Object.keys(groupedPosts).map((topic) => (
+          <li key={topic}>
+            <h4 className="text-lg font-bold my-2">{topic}</h4>
+            <ul>
+              {groupedPosts[topic].map((post) => (
+                <li key={post.slug}>
+                  <button
+                    onClick={() =>
+                      router.push(`/posts/${post.topic}/${post.slug}/page`)
+                    }
+                    className={`w-full text-left text-blue-500 hover:underline ${
+                      post.slug === selectedSlug ? "font-bold" : ""
+                    }`}
+                  >
+                    {post.slug}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
@@ -56,35 +95,23 @@ const Sidebar = ({ posts, selectedSlug }) => {
   );
 };
 
+
 const Navbar = () => {
   return (
-    <div className="bg-gray-200 dark:bg-gray-800 w-full p-4">
+    <div className="bg-gray-200 dark:bg-gray-800 w-full p-4 flex flex-row">
       <h3 className="text-xl font-bold mb-4">Post Slugs</h3>
       <ul>
-        <li>
-          <button className="w-full text-left text-blue-500 hover:underline">
-            Post 1
-          </button>
-        </li>
-        <li>
-          <button className="w-full text-left text-blue-500 hover:underline">
-            Post 2
-          </button>
-        </li>
-        <li>
-          <button className="w-full text-left text-blue-500 hover:underline">
-            Post 3
-          </button>
-        </li>
+     
       </ul>
     </div>
   );
 }
 
 
-const getPostContent = (slug: string) => {
+const getPostContent = (slug: string,topic: string) => {
   const folder = "posts/";
-  const file = `${folder}${slug}.md`;
+  const subfolder = `${topic}/`;
+  const file = `${folder}${subfolder}${slug}.md`;
   const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
   return matterResult;
@@ -92,13 +119,21 @@ const getPostContent = (slug: string) => {
 
 export const getStaticPaths = async () => {
   const posts = getPostMetadata();
-  const paths = posts.map((post) => ({
-    params: {
-      slug: post.slug,
-    },
-  }));
+
+  const mapped = posts.map((post) => {
+    const directory_path = post.directory_path.split('/');
+    const slug = directory_path.pop();
+    const topic = directory_path[0];
+    return {
+      params: {
+        slug: slug,
+        topic: topic,
+      },
+    }
+  });
+
   return {
-    paths,
+    paths: mapped,
     fallback: false,
   };
 };
@@ -108,7 +143,7 @@ export const getStaticPaths = async () => {
 const PostPage = (props: any) => {
   return (
     <div>
-    <Navbar />
+    {/* <Navbar />/ */}
     <div className="flex">
       <Sidebar posts={props.posts} selectedSlug={props.slug} />
 
@@ -117,12 +152,9 @@ const PostPage = (props: any) => {
         <title>{props.title}</title>
       </Head>
 
-      <div className="my-12 text-center">
-        <h1 className="text-2xl text-slate-600 ">{props.title}</h1>
-        <p className="text-slate-400 mt-2">{props.date}</p>
-      </div>
+      
 
-      <article className="prose text-white text-lg min-h-[30vh] mx-auto max-w-[60vw]">
+      <article className="prose text-white mt-10 text-lg min-h-[30vh] mx-auto max-w-[60vw]">
         <Markdown
           options={{
             overrides: {
@@ -148,7 +180,6 @@ const PostPage = (props: any) => {
               img: { component: MyImage,props: {className: 'w-full',},},
               blockquote: { component: MyBlockQuote,props: {className: 'border-l-4 border-gray-400 dark:border-gray-600 italic my-8 pl-8',},},
               code: { component: MyCode,props: {className: 'cd text-gray-700 dark:text-gray-400',},},
-              pre: { component: MyCode,props: {className: 'pr text-gray-700 dark:text-gray-400',},},
               span: { component: MyCode,props: {className: 'sp text-gray-700 dark:text-gray-400',},},
 
               // Tables
@@ -161,6 +192,7 @@ const PostPage = (props: any) => {
 
               // Misc
               hr: { component: MyHorizontalRule,props: {className: 'my-8',},},
+              pre: { component: PreBlock},
             },
           }}
         >
@@ -175,17 +207,25 @@ const PostPage = (props: any) => {
 
 
 export const getStaticProps = async ({ params }: any) => {
-  const postData = getPostContent(params.slug);
-  const allPostsSlug = getPostMetadata();
-  const allPosts = allPostsSlug.map((post) => ({
-    slug: post.slug,
-  }));
+  const postData = getPostContent(params.slug, params.topic);
+  const posts = getPostMetadata();
+  const mapped = posts.map((post) => {
+    const directory_path = post.directory_path.split('/');
+    const slug = directory_path.pop();
+    const topic = directory_path[0];
+    return {
+        slug: slug,
+        topic: topic,
+    }
+  });
+
   const props = {
     title: postData.data.title,
     date: postData.data.date,
     content: postData.content,
     subtitle: postData.data.subtitle,
-    posts: allPosts,
+    posts: mapped,
+    topic: params.topic,
   };
   return {
     props
@@ -193,3 +233,10 @@ export const getStaticProps = async ({ params }: any) => {
 }
 
 export default PostPage;
+
+
+
+/*
+
+
+*/

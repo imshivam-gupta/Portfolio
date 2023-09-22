@@ -1,5 +1,5 @@
 ---
-title: "Second Page"
+title: "Introduction to Distributed Computing"
 subtitle: "Create an AWS account and set up CLI/SDK access."
 date: "2020-12-27"
 ---
