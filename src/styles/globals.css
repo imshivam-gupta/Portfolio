@@ -120,3 +120,50 @@ black-gradient {
    60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
   100% { transform: rotate( 0.0deg) }
 }
+
+.wrapper-bg{
+  background-image: url('../../public/bkg.png');
+}
+
+.styled-bg-clr{
+  background: radial-gradient(38.07% 38.07% at 50% 0,#331d3b 0,rgba(51,29,59,0) 100%),radial-gradient(41.61% 55.5% at 50% 0,rgba(17,18,19,0) 0,#111213 100%),conic-gradient(from 180deg at 50% 0,#331c30 0deg,#3f1b29 43.94deg,#1a1a6c 270.8deg,#351b2f 1turn),#111213;
+}
+
+a{
+  transition: color .3s ease-out;
+}
+
+.sidebar-bkg{
+  background: linear-gradient(90deg,#2f3132,#202223);
+  box-shadow: 0 4px 32px rgba(0,0,0,.25);
+  z-index: 100;
+}
+
+.topic-card{
+  border-radius: 0.5rem;
+  background: linear-gradient(180deg,#44474a,#2f3132);
+  box-shadow: 4px 4px 16px 0 rgba(0,0,0,.25), inset 1px 1px 1px 0 hsla(0,0%,100%,.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.3rem;
+}
+
+@media (min-width: 576px){
+  .c-i-box-grid {
+      grid-template-columns: repeat(2,1fr);
+  }
+}
+
+.c-i-box-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+
+.color-anim{
+  transition: color .3s ease-out;
+}
