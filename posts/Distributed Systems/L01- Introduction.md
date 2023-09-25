@@ -1,8 +1,9 @@
 ---
-title: "Introduction"
-subtitle: "Create an AWS account and set up CLI/SDK access."
+title: "Introduction to Distributed Systems"
+subtitle: "What will this cover"
 date: "2020-12-27"
 ---
+
 
 # Language Processors
 

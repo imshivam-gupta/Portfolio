@@ -53,10 +53,7 @@ const NavBar = () => {
     }
 
     return (
-        <header
-        className='w-full px-32 py-4 fomt-medium flex items-center justify-between
-        dark:text-light relative z-10 lg:px-16 md:px-12 sm:px-8'
-        >
+        <header className='w-full px-32 py-4 fomt-medium flex items-center justify-between dark:text-light relative lg:px-16 md:px-12 sm:px-8 z-30'>
             <button className='flex-col justify-center items-center hidden lg:flex' onClick={handleClick}>
                 <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
                 <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
@@ -71,6 +68,7 @@ const NavBar = () => {
                     <CustomLink href="/about" title="About" className='mx-4'/>
                     <CustomLink href="/techstack" title="Techstack" className='mx-4'/>
                     <CustomLink href="/projects" title="Projects" className='mx-4'/>
+                    <CustomLink href="/tutorials" title="Tutorials" className='mx-4'/>
                     {/* <CustomLink href="/certifications" title="Certifications" className='mx-4'/> */}
                 </nav>
 
@@ -84,10 +82,12 @@ const NavBar = () => {
                         <GithubIcon />
                     </motion.a>
 
-                    <motion.a href="https://linkedin.com/in/shivamgupta2003" target={"_blank"}
-                    className='w-6 mx-3'
-                    whileHover={{y:-2}}
-                    whileTap={{scale:0.9}}
+                    <motion.a 
+                        href="https://linkedin.com/in/shivamgupta2003" 
+                        target={"_blank"}
+                        className='w-6 mx-3'
+                        whileHover={{y:-2}}
+                        whileTap={{scale:0.9}}
                     >
                         <LinkedInIcon />
                     </motion.a>

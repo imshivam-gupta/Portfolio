@@ -1,11 +1,17 @@
+"use client";
+
 import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
-import getPostMetadata from "../../../../components/posts/getPostMetadata";
+import getPostMetadata from "../../../components/posts/getPostMetadata";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { useState,useEffect } from "react";
+// Importing background image
+
+// console.log(bg.src);
 
 
 const MyElement = ({ children, ...props }) => <div {...props}>{children}</div>
@@ -26,7 +32,20 @@ const MyEmphasis = ({ children, ...props }) => <em {...props}>{children}</em>
 const MyStrong = ({ children, ...props }) => <strong {...props}>{children}</strong>
 const MyDelete = ({ children, ...props }) => <del {...props}>{children}</del>
 const MyLink = ({ children, ...props }) => <a {...props}>{children}</a>
-const MyImage = ({ children, ...props }) => <img {...props}>{children}</img>
+
+const MyImage = ({ alt = "Alt", ...props }) => {
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => setIsClient(true), []);
+  if (!isClient) {
+    return null;
+  }
+  return (
+    <div className="mt-2 mb-6">
+      <img alt={alt} {...props} />
+      <p className="text-center text-[#babec3] font-sans text-sm">{alt}</p>
+    </div>
+  );
+};
 const MyList = ({ children, ...props }) => <ul {...props}>{children}</ul>
 const MyOrderedList = ({ children, ...props }) => <ol {...props}>{children}</ol>
 const MyListItem = ({ children, ...props }) => <li {...props}>{children}</li>
@@ -37,10 +56,10 @@ const MyHorizontalRule = ({ children, ...props }) => <hr {...props}>{children}</
 
 
 const CodeBlock = ({ className, children }) => {
-  const language = className.replace("lang-", "");
+  const language = className.replace("lang-", "").split(" ")[0].toLowerCase();
   return (
-    <div className="codeBlock">
-      <SyntaxHighlighter language={language.toLowerCase()} style={docco}>
+    <div className="codeBlock my-6">
+      <SyntaxHighlighter language={language} style={atomOneDark} className="rounded-xl">
         {children}
       </SyntaxHighlighter>
     </div>
@@ -48,16 +67,19 @@ const CodeBlock = ({ className, children }) => {
 }
 
 const PreBlock = ({children, ...rest}) => {
-  if ('type' in children && children ['type'] === 'code') {
+  if ('type' in children) {
     return CodeBlock(children['props']);
   }
-  return <pre {...rest}>{children}</pre>;
+  return <h2 {...rest}>{"jiejfie"}</h2>;
 };
 
-const Sidebar = ({ posts, selectedSlug }) => {
+const Sidebar = ({ posts }) => {
   const router = useRouter();
 
-  // Group posts by topic
+  const possibleSlugs = posts.map((post) => post.slug);
+  const selectedSlug = router.query.slug;
+  console.log("Selected slug: ", selectedSlug)
+
   const groupedPosts = posts.reduce((acc, post) => {
     if (!acc[post.topic]) {
       acc[post.topic] = [];
@@ -67,21 +89,17 @@ const Sidebar = ({ posts, selectedSlug }) => {
   }, {});
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-800 w-[20vw] p-4">
+    <div className="sidebar-bkg w-[20vw] py-4 px-6">
       <ul>
         {Object.keys(groupedPosts).map((topic) => (
-          <li key={topic}>
-            <h4 className="text-lg font-bold my-2">{topic}</h4>
+          <li key={topic} className="mb-4">
+            <div className="text-white font-bold text-lg py-1">{topic}</div>
             <ul>
               {groupedPosts[topic].map((post) => (
                 <li key={post.slug}>
                   <button
-                    onClick={() =>
-                      router.push(`/posts/${post.topic}/${post.slug}/page`)
-                    }
-                    className={`w-full text-left text-blue-500 hover:underline ${
-                      post.slug === selectedSlug ? "font-bold" : ""
-                    }`}
+                    onClick={() =>router.push(`/${post.topic}/${post.slug}/page`)}
+                    className={`w-full text-left text-[#9aa4e7] hover:text-[#a591ee]  ${ post.slug === selectedSlug ? "font-semibold text-xl" : "font-medium text-lg"}`}
                   >
                     {post.slug}
                   </button>
@@ -95,17 +113,6 @@ const Sidebar = ({ posts, selectedSlug }) => {
   );
 };
 
-
-const Navbar = () => {
-  return (
-    <div className="bg-gray-200 dark:bg-gray-800 w-full p-4 flex flex-row">
-      <h3 className="text-xl font-bold mb-4">Post Slugs</h3>
-      <ul>
-     
-      </ul>
-    </div>
-  );
-}
 
 
 const getPostContent = (slug: string,topic: string) => {
@@ -142,55 +149,45 @@ export const getStaticPaths = async () => {
 
 const PostPage = (props: any) => {
   return (
-    <div>
-    {/* <Navbar />/ */}
+    <div className="">
     <div className="flex">
-      <Sidebar posts={props.posts} selectedSlug={props.slug} />
+      <Sidebar posts={props.posts} />
 
-      <div className="flex-1">
+      <div className="flex-1 z-20 bg-[#111213]">
       <Head>
         <title>{props.title}</title>
       </Head>
-
-      
-
+      <div className="">
+        <div className="text-center w-[33%] mx-auto text-white font-bold text-4xl mt-6 mb-12">{props.title}</div>
+      </div>
       <article className="prose text-white mt-10 text-lg min-h-[30vh] mx-auto max-w-[60vw]">
         <Markdown
           options={{
             overrides: {
-              // Headings
-              h1: { component: MyHeading1,props: {className: 'text-4xl font-bold text-gray-700 dark:text-gray-400 mb-3',},},
-              h2: { component: MyHeading2,props: {className: 'text-3xl font-bold text-gray-700 dark:text-gray-400 mb-3',},},
-              h3: { component: MyHeading3,props: {className: 'text-2xl font-bold text-gray-700 dark:text-gray-400 mb-3',},},
-              h4: { component: MyHeading4,props: {className: 'text-xl font-bold text-gray-700 dark:text-gray-400 mb-3',},},
-              h5: { component: MyHeading5,props: {className: 'text-lg font-bold text-gray-700 dark:text-gray-400 mb-3',},},
-              h6: { component: MyHeading6,props: {className: 'text-base font-bold text-gray-700 dark:text-gray-400 mb-3',},},
-              
-              // Lists  
-              ul: { component: MyList,props: {className: 'list-disc  mb-2',},},
+              h1: { component: MyHeading1,props: {className: 'text-4xl font-bold text-white mb-3',},},
+              h2: { component: MyHeading2,props: {className: 'text-3xl font-bold text-white mb-3',},},
+              h3: { component: MyHeading3,props: {className: 'text-2xl font-bold text-white mb-3',},},
+              h4: { component: MyHeading4,props: {className: 'text-xl font-bold text-white mb-3',},},
+              h5: { component: MyHeading5,props: {className: 'text-lg font-bold text-white mb-3',},},
+              h6: { component: MyHeading6,props: {className: 'text-base font-bold text-white mb-3',},},
+              ul: { component: MyList,props: {className: 'marker:text-white list-disc list-inside mt-1 mb-4',},},
               ol: { component: MyOrderedList,props: {className: 'list-decimal ',},},
-              li: { component: MyListItem,props: {className: 'text-gray-700 dark:text-gray-400',},},
-
-              // Text
-              p: { component: MyParagraph,props: {className: 'text-gray-700 dark:text-gray-400',},},
-              em: { component: MyEmphasis,props: {className: 'text-gray-700 dark:text-gray-400',},},
-              strong: { component: MyStrong,props: {className: 'text-gray-700 dark:text-gray-400',},},
-              del: { component: MyDelete,props: {className: 'text-gray-700 dark:text-gray-400',},},
-              a: { component: MyLink,props: {className: 'text-blue-500 hover:underline',},},
-              img: { component: MyImage,props: {className: 'w-full',},},
+              li: { component: MyListItem,props: {className: 'text-[#babec3] font-sans',},},
+              p: { component: MyParagraph,props: {className: 'text-[#babec3] font-sans',},},
+              em: { component: MyEmphasis,props: {className: 'text-[#babec3] ',},},
+              strong: { component: MyStrong,props: {className: 'text-[#babec3] ',},},
+              del: { component: MyDelete,props: {className: 'text-[#babec3] ',},},
+              a: { component: MyLink,props: {className: 'text-[#9aa4e7] hover:text-[#a591ee] font-semibold'},},
+              img: { component: MyImage,props: {className: 'w-[75%] mx-auto mt-2 rounded-xl',},},
               blockquote: { component: MyBlockQuote,props: {className: 'border-l-4 border-gray-400 dark:border-gray-600 italic my-8 pl-8',},},
-              code: { component: MyCode,props: {className: 'cd text-gray-700 dark:text-gray-400',},},
-              span: { component: MyCode,props: {className: 'sp text-gray-700 dark:text-gray-400',},},
-
-              // Tables
-              table: { component: MyTable,props: {className: 'table-auto w-full my-6 rounded-xl border dark:border-gray-700',},},
-              thead: { component: MyTableHead,props: {className: 'bg-gray-200 dark:bg-gray-800',},},
-              tbody: { component: MyTableBody,props: {className: 'bg-gray-100 dark:bg-gray-700',},},
-              tr: { component: MyTableRow,props: {className: 'bg-white border-b dark:bg-gray-800 dark:border-gray-700',},},
-              td: { component: MyTableData,props: {className: 'border px-4 py-2 text-gray-700 dark:text-gray-400',},},
-              th: { component: MyTableHeader,props: {className: 'border px-4 py-2 text-gray-700 dark:text-gray-400',},},
-
-              // Misc
+              code: { component: MyCode,props: {className: 'cd text-[#babec3] ',},},
+              span: { component: MyCode,props: {className: 'sp text-[#babec3] ',},},
+              table: { component: MyTable,props: {className: 'table-auto w-full my-10 rounded-xl bg-transparent border border-white',},},
+              thead: { component: MyTableHead,props: {className: 'bg-transparent',},},
+              tbody: { component: MyTableBody,props: {className: 'bg-transparent',},},
+              tr: { component: MyTableRow,props: {className: 'border-b bg-transparent border-white',},},
+              td: { component: MyTableData,props: {className: 'border px-4 py-2 text-[#babec3] font-sans',},},
+              th: { component: MyTableHeader,props: {className: 'border px-4 py-2 text-white font-semibold text-xl dark:bg-transparent',},},
               hr: { component: MyHorizontalRule,props: {className: 'my-8',},},
               pre: { component: PreBlock},
             },
@@ -199,6 +196,8 @@ const PostPage = (props: any) => {
           {props.content}
         </Markdown>
       </article>
+      <div className="wrapper-bg absolute top-0 left-[20vw] w-[79%] h-full -z-20"/>
+      <div className="styled-bg-clr absolute top-0 left-[20vw] w-[79%] h-full -z-30"/>
     </div>
     </div>
     </div>
