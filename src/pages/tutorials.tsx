@@ -67,6 +67,11 @@ const PostPage = (props: any) => {
                 description={"Complete Computer Networks from basics to advanced covering all needed topics."}
                 topic={"L01- Introduction"}
             />
+             <PostContent 
+                title={"Blockchain"} 
+                description={"Complete Blockchain from basics to advanced covering all needed topics."}
+                topic={"L01- Introduction"}
+            />
             
             
         </div>
