@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Data Structures and Algorithms"
+title: "To Be Updated"
 subtitle: "What will this cover"
 date: "2020-12-27"
 ---
