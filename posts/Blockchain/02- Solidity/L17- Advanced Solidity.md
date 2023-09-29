@@ -7,3 +7,10 @@ date: "2023-09-26"
 - constant and immutable variables
 - custom error
 - recive and fallback
+- enums and events
+- interface
+- try catch
+- function selectos
+- abi.encode / decode
+- hashing
+- yul/assembly

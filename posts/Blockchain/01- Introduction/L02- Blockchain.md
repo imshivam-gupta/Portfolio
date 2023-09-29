@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Data Structures and Algorithms"
-subtitle: "What will this cover"
+title: "Introduction to Blockchain"
+subtitle: "This topic covers the basics of Blockchain and basic protocols" 
 date: "2020-12-27"
 ---
 

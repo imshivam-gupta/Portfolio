@@ -68,7 +68,7 @@ const NavBar = () => {
                     <CustomLink href="/about" title="About" className='mx-4'/>
                     <CustomLink href="/techstack" title="Techstack" className='mx-4'/>
                     <CustomLink href="/projects" title="Projects" className='mx-4'/>
-                    <CustomLink href="/tutorials" title="Tutorials" className='mx-4'/>
+                    {/* <CustomLink href="/tutorials" title="Tutorials" className='mx-4'/> */}
                     {/* <CustomLink href="/certifications" title="Certifications" className='mx-4'/> */}
                 </nav>
 
