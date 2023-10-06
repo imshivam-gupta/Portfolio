@@ -1,11 +1,9 @@
 ---
-title: "Introduction to Data Structures and Algorithms"
+title: "Blockchain Oracles"
 subtitle: "What will this cover"
 date: "2020-12-27"
 ---
 
-
-# Blockchain Oracle
 
 Blockchain oracles are entities that connect blockchains to external systems, thereby enabling smart contracts to execute based upon inputs and outputs from the real world. 
 

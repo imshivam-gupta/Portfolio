@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         mont: ['var(--font-mont)', ...fontFamily.sans],
+        mart: ['var(--font-roboto-mono)'],
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
@@ -32,6 +33,7 @@ module.exports = {
         circularDarkMd: "repeating-radial-gradient(rgba(255,255,255,0.5) 2px,#1b1b1b 6px,#1b1b1b 60px)",
         circularLightSm: "repeating-radial-gradient(rgba(0,0,0,0.4) 2px,#f5f5f5 5px,#f5f5f5 40px)",
         circularDarkSm: "repeating-radial-gradient(rgba(255,255,255,0.5) 2px,#1b1b1b 4px,#1b1b1b 40px)",
+        lds: "linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%)"
       }
     },
     screens: {

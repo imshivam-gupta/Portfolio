@@ -17,6 +17,7 @@ const Logo = () => {
         >
          SG
         </MotionLink>
+        
     </div>
   )
 }

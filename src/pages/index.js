@@ -8,8 +8,15 @@ import { LinkArrow } from "@/components/Icons";
 import profilePic from "../../public/images/profile/developer-pic-1.png";
 import lightBulb from "../../public/images/svgs/miscellaneous_icons_1.svg";
 import TransitionEffect from "@/components/TransitionEffect";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Home() {
+
+
+
+
+
   return (
     <>
 
@@ -24,7 +31,8 @@ export default function Home() {
       <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
         <Layout className="pt-0 md:pt-16 sm:pt-8">
           <div className="flex items-center justify-between w-full lg:flex-col">
-            <div className="w-1/2 md:w-full ml-20">
+            <motion.div className="w-1/2 md:w-full ml-20 lxmove"
+            >
               <Image
                 src={profilePic}
                 alt="Shivam Gupta"
@@ -32,7 +40,7 @@ export default function Home() {
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
-            </div>
+            </motion.div>
             <div className="w-1/2 flex flex-col item-center self-center lg:w-full lg:text-center">
 
               <AnimatedText

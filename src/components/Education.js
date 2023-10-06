@@ -2,16 +2,45 @@ import { useRef } from "react"
 import { motion, useScroll } from "framer-motion"
 import LiIcon from "./LiIcon"
 
+const quote = {
+    initial: {
+        opacity:1
+    },
+    animate:{
+        opacity:1,
+        transition:{
+            delay:0.5,
+            staggerChildren:0.08
+        }
+    }
+  }
+  
+  const singleWord = {
+    initial: {
+        opacity:0,
+        y:50
+    },
+    animate:{
+        opacity:1,
+        y:0,
+        transition:{
+            duration:1
+        }
+    }
+  }
+
+
 const Details = ({type, time, place, info}) => {
     const ref = useRef(null)
     
     return (
-        <li ref={ref} className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between md:w-[80%]">
+        <li ref={ref} className="my-8  first:mt-0 last:mb-0 w-[60%]  flex flex-col items-center justify-between md:w-[80%]">
             <LiIcon reference={ref} />
             <motion.div
             initial={{y:50}}
             whileInView={{y:0}}
             transition={{duration:0.5, type:'spring'}}
+            className="ml-16"
             >
                 <h3 className="capitalize font-bold text-2xl sm:text-xl xs:text-lg my-1">
                     {type}
@@ -35,13 +64,27 @@ const Education = () => {
     })
 
   return (
-    <div className='my-40 xs:my-28 sm:my-24 md:my-20'>
-        <h2 className='font-bold text-8xl mb-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16'>
-            Education
-        </h2>
+    <div className='my-32 xs:my-28 sm:my-24 md:my-20 w-[80%] mx-auto'>
+        <div className='overflow-hidden mb-10 sm:py-0'>
+        <motion.h1 className={`inline-block w-full text-dark font-bold capitalize text-6xl dark:text-light `}
+        variants={quote}
+        initial='initial'
+        animate='animate'
+        >
+            {
+                "My Education".split(' ').map((word, index) => 
+                <motion.span key={word+'-'+index} className='inline-block mt-4 tracking-wide'
+                variants={singleWord}
+                >
+                    {word}&nbsp;
+                </motion.span>
+                )
+            }
+        </motion.h1>
+    </div>
 
-        <div className='w-[75%] mx-auto relative lg:w-[90%] md:w-full' ref={ref}>
-            <motion.div style={{scaleY: scrollYProgress}} className="absolute left-9 top-0 w-[4px] h-full bg-dark dark:bg-light origin-top md:w-[2px] md:left-[30px] xs:left-[20px]"/>
+        <div className='relative lg:w-[90%] md:w-full' ref={ref}>
+            <motion.div style={{scaleY: scrollYProgress}} className="absolute left-9 top-0 w-[4px] h-full maindarkbkg origin-top dark:bg-light md:w-[2px]  xs:left-[20px]"/>
             <ul className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2">
                 <Details 
                     type='Bachelor Of Science In Computer Science'

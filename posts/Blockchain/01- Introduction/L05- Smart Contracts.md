@@ -1,12 +1,12 @@
 ---
-title: "Introduction to Data Structures and Algorithms"
+title: "Smart Contracts"
 subtitle: "What will this cover"
 date: "2020-12-27"
 ---
 
 
 
-# Smart Contracts
+
 
 Smart contracts are self-executing contracts with the terms of the agreement directly written into code. They run on blockchain platforms like Ethereum and automatically execute when predefined conditions are met. 
 

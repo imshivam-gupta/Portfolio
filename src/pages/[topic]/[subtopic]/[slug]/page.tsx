@@ -10,6 +10,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import { motion, AnimatePresence } from "framer-motion"; 
 import { useState,useEffect } from "react";
+import { FiCopy } from 'react-icons/fi';
+import { FcCheckmark } from 'react-icons/fc';
 
 
 
@@ -41,7 +43,7 @@ const MyImage = ({ alt = "Alt", ...props }) => {
   return (
     <div className="mt-4 mb-6">
       <img alt={alt} {...props} />
-      <p className="text-center text-[#babec3] font-sans text-sm">{alt}</p>
+      <p className="mt-[5px] text-center text-[#babec3] font-sans text-sm">{alt}</p>
     </div>
   );
 };
@@ -56,22 +58,26 @@ const MyHorizontalRule = ({ children, ...props }) => <hr {...props}>{children}</
 
 const CodeBlock = ({ className, children }) => {
   const language = className.replace("lang-", "").split(" ")[0].toLowerCase();
+  const [elem,setElem] = useState(<FiCopy className="inline "/>);
+
   const [text, setText] = useState("Copy");
 
   const changeText = () => {
       setText("Copied!");
+      setElem(<FcCheckmark className="inline "/>);
       setTimeout(() => {
         setText("Copy");
+        setElem(<FiCopy className="inline "/>)
       }
-    , 500);
+    , 2000);
   }
 
   return (
-    <div className="codeBlock">
+    <div className="codeBlock mb-6 -mt-2">
       <div className="relative top-8 text-right pr-10 text-sm">
         <span className="mr-6">{language}</span>
         <motion.span
-          className={` text-gray-200 ${text=="Copied!" ? "text-green-500 cursor-none" : "cursor-pointer"}`}
+          className={` text-gray-200 ${text=="Copied!" ? "text-green-500 cursor-default" : "cursor-pointer"}`}
           onClick={() => {
             navigator.clipboard.writeText(children);
             changeText();
@@ -80,13 +86,13 @@ const CodeBlock = ({ className, children }) => {
             color: text=="Copied!" ? "#22C55E" : "#FFFFFF" 
           }}
           transition={{ duration: 0.1 }} // Adjust the duration as needed
-        >{text}</motion.span>
+        >{elem}</motion.span>
       </div>
       <SyntaxHighlighter 
         language={language} 
-        showLineNumbers={true}
+        showLineNumbers={language!=="md" ? true : false}
         style={atomOneDark} 
-        className="rounded-md text-sm !py-4 !px-4 bggrad prevent-select"
+        className={`rounded-md text-sm !py-4 !px-4 bggrad prevent-select ${language!=="md" ? "!px-10" : "!px-10"}}`}
         >
         {children}
       </SyntaxHighlighter>
@@ -114,13 +120,14 @@ const Sidebar = ({ posts }) => {
   const [expandedTopics, setExpandedTopics] = useState([]);
 
   useEffect(() => {
+    setExpandedTopics([selectedSubtopic]);
     // if (selectedSubtopic) {
     //   setExpandedTopics([selectedSubtopic]);
     // }
     // // adding all subtopics to expandedTopics
     // else {
-      const topics = posts.map((post) => post.subtopic);
-      setExpandedTopics(topics);
+      // const topics = posts.map((post) => post.subtopic);
+      // setExpandedTopics(topics);
     // }
   }, [selectedSubtopic]);
     
@@ -145,26 +152,30 @@ const Sidebar = ({ posts }) => {
   }, {});
 
   return (
-    <div className="sidebar-bkg w-[20vw] py-4 px-6 ">
+    <div className="sidebar-bkg w-[22vw] min-h-[90vh] overflow-y-auto  pt-4 scrollclass pb-20 px-6">
       <ul>
         {Object.keys(groupedPosts).map((topic) => (
           <motion.li 
             key={topic} 
             className={`my-3`}
           >
-            <div
-              className={`font-bold text-lg rounded-lg cursor-pointer bg-black bg-opacity-10 px-4 py-2 ${expandedTopics.includes(topic) ? 'text-white' : 'text-gray-300'}`}
+            <motion.div
+              className={`font-bold text-md rounded-lg cursor-pointer bg-black bg-opacity-10 px-4 py-2 ${expandedTopics.includes(topic) ? 'text-white' : 'text-gray-300'}`}
               onClick={() => toggleTopic(topic)}
+              animate={{
+                color: expandedTopics.includes(topic) ? "#FFFFFF" : "#888888" 
+              }}
+              transition={{ duration: 0.5 }} // Adjust the duration as needed
             >
               {topic.split("-")[1]}
-            </div>
+            </motion.div>
             {expandedTopics.includes(topic) && (
               <ul className="pl-4 py-2">
                 {groupedPosts[topic].map((post) => (
                   <motion.li 
                     key={post.slug}
                     animate={{
-                      color: post.slug === selectedSlug ? "#FFFFFF" : "#888888" 
+                      color: (post.slug == selectedSlug && post.subtopic==selectedSubtopic) ? "#FFFFFF" : "#888888" 
                     }}
                     transition={{ duration: 0.2 }} // Adjust the duration as needed
                   >
@@ -173,7 +184,7 @@ const Sidebar = ({ posts }) => {
                         router.push(`/${post.topic}/${post.subtopic}/${post.slug}/page`)}
                       }
                       className={`w-full text-left text-md my-1  hover:text-gray-200 h-max-content ${
-                        post.slug == selectedSlug ? "font-semibold border-l-4 border-white pl-2" : "font-medium"
+                        (post.slug == selectedSlug && post.subtopic==selectedSubtopic) ? "font-semibold border-l-4 border-white pl-2" : "font-medium"
                       }`}
                     >
                       {post.slug.split("-")[1]}
@@ -211,6 +222,7 @@ export const getStaticPaths = async () => {
     const slug = directory_path.pop();
     const topic = directory_path[0];
     const subtopic = directory_path[1];
+    // console.log(`post: ${slug} ${topic} ${subtopic}`);
     return {
       params: {
         slug: slug,
@@ -264,7 +276,7 @@ const PostPage = (props: any) => {
       <div className="">
         <div className="text-center w-[40%] mx-auto text-white font-bold text-4xl mt-6 mb-12">{props.title}</div>
       </div>
-      <article className="prose text-white my-10 text-lg min-h-[30vh] mx-auto max-w-[65vw]">
+      <article className="prose text-white my-10 text-lg min-h-[50vh] mx-auto max-w-[65vw]">
         <Markdown
           options={{
             overrides: {
@@ -279,15 +291,15 @@ const PostPage = (props: any) => {
               li: { component: MyListItem,props: {className: 'text-[#babec3] font-sans',},},
               p: { component: MyParagraph,props: {className: 'text-[#babec3] font-sans mb-1 prevent-select',},},
               em: { component: MyEmphasis,props: {className: 'text-[#babec3] ',},},
-              strong: { component: MyStrong,props: {className: 'text-white prevent-select',},},
+              strong: { component: MyStrong,props: {className: 'text-white font-semibold prevent-select',},},
               del: { component: MyDelete,props: {className: 'text-[#babec3] ',},},
               a: { component: MyLink,props: {className: 'text-[#9aa4e7] hover:text-[#a591ee] font-semibold'},},
-              img: { component: MyImage,props: {className: 'w-[75%] mx-auto mt-2 rounded-xl',},},
+              img: { component: MyImage,props: {className: 'w-[75%]  mx-auto mt-2 rounded-xl ',},},
               blockquote: { component: MyBlockQuote,props: {className: 'border-l-4 border-gray-400 dark:border-gray-600 italic my-8 pl-8',},},
               code: { component: MyCode,props: {className: 'cd text-[#babec3] ',},},
               span: { component: MyCode,props: {className: 'sp text-[#babec3] ',},},
-              table: { component: MyTable,props: {className: 'table-fixed w-full my-10 rounded-xl bg-transparent border border-white',},},
-              thead: { component: MyTableHead,props: {className: 'bg-transparent',},},
+              table: { component: MyTable,props: {className: 'table-fixed w-full mt-6 mb-10 rounded-xl bg-transparent border border-white',},},
+              thead: { component: MyTableHead,props: {className: 'bggrad',},},
               tbody: { component: MyTableBody,props: {className: 'bg-transparent',},},
               tr: { component: MyTableRow,props: {className: 'border-b bg-transparent border-white',},},
               td: { component: MyTableData,props: {className: 'border px-4 py-2 text-[#babec3] font-sans align-top',},},
@@ -316,8 +328,8 @@ const PostPage = (props: any) => {
         }
       </div>
 
-      <div className="wrapper-bg absolute top-0 left-[20vw] w-[79%] h-full -z-20"/>
-      <div className="styled-bg-clr absolute top-0 left-[20vw] w-[79%] h-full -z-30"/>
+      <div className="wrapper-bg absolute top-0 left-[22vw] w-[75%] h-full -z-20"/>
+      <div className="styled-bg-clr absolute top-0 left-[22vw] w-[75%] h-full -z-30"/>
       <div
       className={`fixed right-12 bottom-12 text-white text-2xl cursor-pointer` }
       onClick={scrollToTop}
@@ -363,10 +375,10 @@ export const getStaticProps = async ({ params }: any) => {
 
 
   const props = {
-    title: postData.data.title,
-    date: postData.data.date,
-    content: postData.content,
-    subtitle: postData.data.subtitle,
+    title: postData.data.title || "Sample title",
+    date: postData.data.date || "Sample date",
+    content: postData.content || "Sample content",
+    subtitle: postData.data.subtitle || "Sample subtitle",
     posts: mapped,
     topic: params.topic,
     prevPost,

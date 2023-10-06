@@ -17,22 +17,44 @@ export const GithubIcon = ({ className, ...rest }) => (
   </svg>
 );
 
+
 export const TwitterIcon = ({ className, ...rest }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
-    viewBox="0 0 256 209"
-    {...rest}
-    className={`w-full h-auto ${className}`}
-  >
-    <path fill="none" d="M0 0h256v209H0z" />
-    <path
-      fill="#55acee"
-      d="M256 25.45a105.04 105.04 0 0 1-30.166 8.27c10.845-6.5 19.172-16.793 23.093-29.057a105.183 105.183 0 0 1-33.351 12.745C205.995 7.201 192.346.822 177.239.822c-29.006 0-52.523 23.516-52.523 52.52 0 4.117.465 8.125 1.36 11.97-43.65-2.191-82.35-23.1-108.255-54.876-4.52 7.757-7.11 16.78-7.11 26.404 0 18.222 9.273 34.297 23.365 43.716a52.312 52.312 0 0 1-23.79-6.57c-.003.22-.003.44-.003.661 0 25.447 18.104 46.675 42.13 51.5a52.592 52.592 0 0 1-23.718.9c6.683 20.866 26.08 36.05 49.062 36.475-17.975 14.086-40.622 22.483-65.228 22.483-4.24 0-8.42-.249-12.529-.734 23.243 14.902 50.85 23.597 80.51 23.597 96.607 0 149.434-80.031 149.434-149.435 0-2.278-.05-4.543-.152-6.795A106.748 106.748 0 0 0 256 25.45"
-    />
-  </svg>
-);
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1668.56 1221.19"
+      width="4em"
+      height="4em"
+      style={{enableBackground: 'new 0 0 1668.56 1221.19'}}
+      {...rest}
+      className={`w-12 h-12 -ml-3 ${className}`}
+    >
+       <style type="text/css">
+          {`
+            .st0 {
+              stroke: #FFFFFF;
+              stroke-miterlimit: 10;
+            }
+            .st1 {
+              fill: #FFFFFF;
+            }
+          `}
+        </style>
+      <path fill="none" d="M0 0h256v256H0z" />
+      <g>
+      <circle class="st0" cx="834.28" cy="610.6" r="481.33"/>
+      <g id="layer1" transform="translate(52.390088,-25.058597)">
+        <path id="path1009" class="st1" d="M485.39,356.79l230.07,307.62L483.94,914.52h52.11l202.7-218.98l163.77,218.98h177.32
+          L836.82,589.6l215.5-232.81h-52.11L813.54,558.46L662.71,356.79H485.39z M562.02,395.17h81.46l359.72,480.97h-81.46L562.02,395.17
+          z"/>
+      </g>
+      </g>
+    </svg>
+  
+  
+  // </svg>
+  );
+  
+
 // #0A66C2
 
 export const LinkedInIcon = ({ className, ...rest }) => (
@@ -66,12 +88,12 @@ export const InstagramIcon = ({ className, ...rest }) => (
   >
     <defs>
         <radialGradient id="a" cx="6.601" cy="99.766" r="129.502" gradientUnits="userSpaceOnUse">
-            <stop offset=".09" stop-color="#fa8f21"></stop>
-            <stop offset=".78" stop-color="#d82d7e"></stop>
+            <stop offset=".09" stopColor="#fa8f21"></stop>
+            <stop offset=".78" stopColor="#d82d7e"></stop>
         </radialGradient>
         <radialGradient id="b" cx="70.652" cy="96.49" r="113.963" gradientUnits="userSpaceOnUse">
-            <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0"></stop>
-            <stop offset="1" stop-color="#8c3aaa"></stop>
+            <stop offset=".64" stopColor="#8c3aaa" stopOpacity="0"></stop>
+            <stop offset="1" stopColor="#8c3aaa"></stop>
         </radialGradient>
     </defs>
     <path fill="url(#a)"

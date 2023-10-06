@@ -1,11 +1,9 @@
 ---
-title: "Introduction to Data Structures and Algorithms"
+title: "Web Three"
 subtitle: "What will this cover"
 date: "2020-12-27"
 ---
 
-
-# Web3
 
 Web3 is a new evolution of the Internet based around the principles of decentralization. Web3 combines the rich and interactive digital experiences that exist today with infrastructure that offers users ownership and cryptographic guarantees.
 

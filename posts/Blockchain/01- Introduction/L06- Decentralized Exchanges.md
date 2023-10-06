@@ -1,11 +1,11 @@
 ---
-title: "Introduction to Data Structures and Algorithms"
+title: "Decentralized Exchanges"
 subtitle: "What will this cover"
 date: "2020-12-27"
 ---
 
 
-# Decentralized Exchanges
+
 
 A DEX (decentralized exchange) is a peer-to-peer marketplace where users can trade cryptocurrencies in a non-custodial manner without the need for an intermediary to facilitate the transfer and custody of funds. DEXs substitute intermediaries—traditionally, banks, brokers, payment processors, or other institutions—with blockchain-based smart contracts that facilitate the exchange of assets. 
 
@@ -48,9 +48,9 @@ Some popular AMM DEXs include Bancor, Balancer, Curve, PancakeSwap, Sushiswap, T
 
 ## DEX Risks and Considerations
 
-- Smart contract risk—Blockchains are considered highly secure for executing financial transactions. However, the code quality of a smart contract is nevertheless dependent on the skill level and experience of team that developed it. Smart contract bugs, hacks, vulnerabilities, and exploits can occur, leaving DEX users susceptible to a loss of funds. Developers can mitigate this risk through security audits, peer-reviewed code, and sound testing practices, but diligence is always required.
-- Liquidity risk—While DEXs are becoming increasingly popular, some DEX markets have poor liquidity conditions, leading to large amounts of slippage and a suboptimal user experience. Due to how the network effects of liquidity works (high liquidity attracts more liquidity, low liquidity attracts less liquidity), significant portions of trading activity is still conducted on centralized exchanges, which often leads to less liquidity on DEX trading pairs.
-- Frontrunning risk—Due to the public nature of blockchain transactions, DEX trades may be frontrun by arbitrageurs or maximal extractable value (MEV) bots trying to siphon value from unwitting users. Similar to high-frequency traders in traditional markets, these bots try to exploit market inefficiencies by paying higher transaction fees and optimizing network latency to exploit ordinary users’ DEX trades.
-- Centralization risk—While many DEXs aim to maximize their decentralization and censorship resistance, points of centralization can still be present. These include the DEX’s matching engine being hosted on centralized servers, the development team having administrative access to the DEX’s smart contracts, and the use of low-quality token bridging infrastructure among others.
-- Network risk—As the exchange of assets is facilitated by a blockchain, using a DEX may be prohibitively expensive or outright impossible if the network experiences congestion or downtime, leaving DEX users susceptible to market movements.
-- Token risk—As many DEXs feature permissionless market creation—the ability for anyone to create a market for any token—the risks of buying low-quality or malicious tokens can be higher than in centralized exchanges. DEX users need to consider the risks associated with participating in early-stage projects.
+- **Smart contract risk:** Blockchains are considered highly secure for executing financial transactions. However, the code quality of a smart contract is nevertheless dependent on the skill level and experience of team that developed it. Smart contract bugs, hacks, vulnerabilities, and exploits can occur, leaving DEX users susceptible to a loss of funds. Developers can mitigate this risk through security audits, peer-reviewed code, and sound testing practices, but diligence is always required.
+- **Liquidity risk:** While DEXs are becoming increasingly popular, some DEX markets have poor liquidity conditions, leading to large amounts of slippage and a suboptimal user experience. Due to how the network effects of liquidity works (high liquidity attracts more liquidity, low liquidity attracts less liquidity), significant portions of trading activity is still conducted on centralized exchanges, which often leads to less liquidity on DEX trading pairs.
+- **Frontrunning risk:** Due to the public nature of blockchain transactions, DEX trades may be frontrun by arbitrageurs or maximal extractable value (MEV) bots trying to siphon value from unwitting users. Similar to high-frequency traders in traditional markets, these bots try to exploit market inefficiencies by paying higher transaction fees and optimizing network latency to exploit ordinary users’ DEX trades.
+- **Centralization risk:** While many DEXs aim to maximize their decentralization and censorship resistance, points of centralization can still be present. These include the DEX’s matching engine being hosted on centralized servers, the development team having administrative access to the DEX’s smart contracts, and the use of low-quality token bridging infrastructure among others.
+- **Network risk:** As the exchange of assets is facilitated by a blockchain, using a DEX may be prohibitively expensive or outright impossible if the network experiences congestion or downtime, leaving DEX users susceptible to market movements.
+- **Token risk:** As many DEXs feature permissionless market creation the ability for anyone to create a market for any token the risks of buying low-quality or malicious tokens can be higher than in centralized exchanges. DEX users need to consider the risks associated with participating in early-stage projects.

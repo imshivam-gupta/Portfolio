@@ -5,8 +5,6 @@ date: "2020-12-27"
 ---
 
 
-# What is Blockchain
-
 A blockchain is "a distributed database that maintains a continuously growing list of ordered records, called blocks." These blocks “are linked using cryptography. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data. A blockchain is a decentralized, distributed and public digital ledger that is used to record transactions across many computers so that the record cannot be altered retroactively without the alteration of all subsequent blocks and the consensus of the network.
 
 
