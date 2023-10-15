@@ -170,7 +170,7 @@ const Sidebar = ({ posts }) => {
               {topic.split("-")[1]}
             </motion.div>
             {expandedTopics.includes(topic) && (
-              <ul className="pl-4 py-2">
+              <ul className="pl-4 py-2 max-h-[30vh] overflow-y-auto scrollclass">
                 {groupedPosts[topic].map((post) => (
                   <motion.li 
                     key={post.slug}
@@ -276,7 +276,7 @@ const PostPage = (props: any) => {
       <div className="">
         <div className="text-center w-[40%] mx-auto text-white font-bold text-4xl mt-6 mb-12">{props.title}</div>
       </div>
-      <article className="prose text-white my-10 text-lg min-h-[50vh] mx-auto max-w-[65vw]">
+      <article className="mdcl prose text-white my-10 text-lg min-h-[50vh] mx-auto max-w-[65vw]">
         <Markdown
           options={{
             overrides: {
@@ -298,12 +298,14 @@ const PostPage = (props: any) => {
               blockquote: { component: MyBlockQuote,props: {className: 'border-l-4 border-gray-400 dark:border-gray-600 italic my-8 pl-8',},},
               code: { component: MyCode,props: {className: 'cd text-[#babec3] ',},},
               span: { component: MyCode,props: {className: 'sp text-[#babec3] ',},},
-              table: { component: MyTable,props: {className: 'table-fixed w-full mt-6 mb-10 rounded-xl bg-transparent border border-white',},},
-              thead: { component: MyTableHead,props: {className: 'bggrad',},},
-              tbody: { component: MyTableBody,props: {className: 'bg-transparent',},},
-              tr: { component: MyTableRow,props: {className: 'border-b bg-transparent border-white',},},
-              td: { component: MyTableData,props: {className: 'border px-4 py-2 text-[#babec3] font-sans align-top',},},
-              th: { component: MyTableHeader,props: {className: 'border px-4 py-2 text-white font-semibold text-xl dark:bg-transparent',},},
+
+              table: { component: MyTable,props: {className: 'table-fixed w-full mt-6 mb-10 rounded-xl',},},
+              thead: { component: MyTableHead,props: {className: 'bggrad rounded-xl',},},
+              tbody: { component: MyTableBody,props: {className: 'bg-[#25252B]',},},
+              tr: { component: MyTableRow,props: {className: ' bg-transparent border-b border-2 border-[#111213] text-[#b3b3b3]  ease-in-out duration-300 hover:text-white hover:bg-[#2e2e36]',},},
+              td: { component: MyTableData,props: {className: 'px-4 py-2  font-sans align-top',},},
+              th: { component: MyTableHeader,props: {className: 'py-2 text-white font-semibold text-lg text-left px-4',},},
+
               hr: { component: MyHorizontalRule,props: {className: 'my-8',},},
               pre: { component: PreBlock},
             },
@@ -369,9 +371,16 @@ export const getStaticProps = async ({ params }: any) => {
 
   // console.log(`current index: ${currentIndex}`);
 
-  const prevPost = currentIndex > 0 ? mapped[currentIndex - 1] : null;
-  const nextPost = currentIndex < mapped.length - 1 ? mapped[currentIndex + 1] : null;
+  let prevPost = currentIndex > 0 ? mapped[currentIndex - 1] : null;
+  let nextPost = currentIndex < mapped.length - 1 ? mapped[currentIndex + 1] : null;
+  
+  if(prevPost && prevPost.topic !== params.topic){
+    prevPost = null;
+  }
 
+  if(nextPost && nextPost.topic !== params.topic){
+    nextPost = null;
+  }
 
 
   const props = {

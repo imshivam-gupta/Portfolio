@@ -42,7 +42,7 @@ T (n) = 2^n-1 T (1)
 A recursion tree is a graphical representation that illustrates the execution flow of a recursive function. It provides a visual breakdown of recursive calls, showcasing the progression of the algorithm as it branches out and eventually reaches a base case. The tree structure helps in analyzing the time complexity and understanding the recursive process involved.
 The base case serves as the termination condition for a recursive function. It defines the point at which the recursion stops and the function starts returning values. In a recursion tree, the nodes representing the base case are usually depicted as leaf nodes, as they do not result in further recursive calls. Steps to Solve Recurrence Relations Using Recursion Tree Method with example - **T(n) = 2T(n/2) + c**
 
-#### Step-01:
+##### Step-01:
 Draw a recursion tree based on the given recurrence relation.
 
 
@@ -52,7 +52,7 @@ Draw a recursion tree based on the given recurrence relation.
     style="width: 350px; height: 250px; margin-left: 0; margin-right: 0px; margin-bottom: 0px; margin-top: 20px"
 />
 
-#### Step-02: 
+##### Step-02: 
 Calculate the work done or cost at each level and count total no of levels in recursion tree 
 
 <img

@@ -12,5 +12,27 @@ It allows flexibility to give the same name but to many classes that is to avoid
 
 ## Advantages of using packages
 
-> TBD
+- Packages provide code reusability because a package contains a group of classes.
+- It helps in removing name space collision when multiple packages have classes with the same name.
+- Packages also provide the hiding of class facility. Thus programs can't use classes from another package until they are public. 
+- Access Limitation can be applied with the help of packages.
+- Nesting of packages is also possible in heirarchical manner.
+
+## User Defined Packages
+
+- We can maintain our own packages and classes in a package.
+- Java uses file system directory to store packages.
+- The package statement should be the first statement in the source file.
+
+```java
+package myPackage;
+
+public class MyClass {
+    // ...
+}
+```
+
+- Packages are ususally defined with heirarchical naming convention. For example, a package named myPackage.mySubPackage.mySubSubPackage can be used to define a package named myPackage which is a sub package of mySubPackage which is a sub package of mySubSubPackage. Levels in heirarchy are separated by a dot(.).
+- Thre is no semantic relationship between packages. For example, a package named myPackage.mySubPackage.mySubSubPackage is not a sub package of myPackage.mySubPackage
+- Package name should be all lower case letters whenever possible.
 

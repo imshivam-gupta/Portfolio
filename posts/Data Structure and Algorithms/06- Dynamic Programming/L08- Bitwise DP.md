@@ -1,0 +1,12 @@
+
+- [Stickers to Spell Word](https://leetcode.com/problems/stickers-to-spell-word/)
+- [Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/)
+- [Smallest Sufficient Team](https://leetcode.com/problems/smallest-sufficient-team/)
+- [Maximum Students Taking Exam](https://leetcode.com/problems/maximum-students-taking-exam/)
+- [Number of Ways to Wear Different Hats to Each Other](https://leetcode.com/problems/number-of-ways-to-wear-different-hats-to-each-other/)
+- [Minimum Cost to Connect Two Groups of Points](https://leetcode.com/problems/minimum-cost-to-connect-two-groups-of-points/)
+- [Maximum Number of Achievable Transfer Requests](https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/)
+- [Distribute Repeating Integers](https://leetcode.com/problems/distribute-repeating-integers/)
+- [Maximise Grid Happiness](https://leetcode.com/problems/maximize-grid-happiness/)
+- [Can I Win](https://leetcode.com/problems/can-i-win/)
+- [Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)

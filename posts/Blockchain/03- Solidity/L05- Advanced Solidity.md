@@ -66,3 +66,5 @@ There are no restrictions on reading immutable variables. The read is even allow
 - function selectos
 - abi.encode / decode
 - yul/assembly
+- library vs interface
+- constant and immutable state variables in fund me

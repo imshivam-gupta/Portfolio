@@ -4,6 +4,18 @@ subtitle: "What will this cover"
 date: "2020-12-27"
 ---
 
+
+## Topics to be searched
+
+- eip
+- erc (bep,pep)
+we can import openzeppinl code and inherit that contract
+
+[Link](https://eips.ethereum.org/EIPS/eip-20)
+
+
+Rest everything is same as previous contract
+
 # Fungible Tokens
 
 Fungible tokens are a type of cryptocurrency or digital asset that is interchangeable with other tokens of the same type and value. In other words, each unit of a fungible token is identical in value and can be exchanged on a one-to-one basis with any other unit of the same token without any differences or distinctions. This interchangeability is a fundamental characteristic of fungible tokens and is similar to how physical currencies like dollars or euros work.
