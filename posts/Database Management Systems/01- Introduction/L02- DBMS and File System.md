@@ -23,13 +23,13 @@ File System is a method used to organize and store data in a hierarchical struct
 | Security Constraints	| File systems provide less security in comparison to DBMS.| 	DBMS has more security mechanisms as compared to file systems.| 
 | Cost	| It is less expensive than DBMS.	| It has a comparatively higher cost than a file system.| 
 | Data Independence	| There is no data independence.	| In DBMS data independence exists.| 
-| User Access	Only one user can access data at a time.	| Multiple users can access data at a time.| 
+| User Access	| Only one user can access data at a time.	| Multiple users can access data at a time.| 
 | Meaning| 	The user not required to write procedures.| 	The user has to write procedures for managing databases| 
 | Sharing | 	Data is distributed in many files. So, not easy to share data	| Due to centralized nature sharing is easy| 
 | Data Abstraction| 	It give details of storage and representation of data| 	It hides the internal details of Database| 
 | Integrity Constraints	| Integrity Constraints are difficult to implement	| Integrity constraints are easy to implement| 
 | Attributes	| To access data in a file , user requires attributes such as file name ,file location.	| No such attributes are required.| 
-| Example	Cobol, C++	| Oracle, SQL Server| 
+| Example	| Cobol, C++	| Oracle, SQL Server| 
 
 
 #### Advantages of DBMS over File System

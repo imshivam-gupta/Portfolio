@@ -10,6 +10,7 @@
 }
 
 
+
 black-gradient {
   background: #000000;
   /* fallback for old browsers */
@@ -222,6 +223,7 @@ a {
   /* Standard syntax */
 }
 
+
 /* 
 .next-page-cont{
   display: flex;
@@ -373,4 +375,25 @@ button.back-to-top.show:active {
 
 .mdcl ul ul{
   margin-left: 25px;
+}
+
+gradientblock{
+  display: block;
+  color: white;
+  min-width: 30rem;
+  width: 100%;
+  padding: 0.8rem;
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(180deg, #2f3132, #202223);
+  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, .25), inset 1px 1px 1px hsla(0, 0%, 100%, .1);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.hidescroll::-webkit-scrollbar {
+  display: none;
 }

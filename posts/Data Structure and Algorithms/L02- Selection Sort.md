@@ -4,6 +4,11 @@ subtitle: "What will this cover"
 date: "2020-12-27"
 ---
 
+## Algorithm
+
+- Find the minimum element in unsorted array and swap it with element at beginning of unsorted array.
+- Repeat the above steps until the entire array is sorted.
+- In each iteration, the unsorted array shrinks by one element.
 
 
 ## Code

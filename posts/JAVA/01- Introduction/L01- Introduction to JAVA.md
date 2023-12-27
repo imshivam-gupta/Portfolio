@@ -48,32 +48,30 @@ date: "2023-07-12"
 
 Java is based on Object Oriented Programming(OOP) paradigm. Object contains both data and the functionality that operates on the data. OOP is based on the following principles:
 
-- Encapsulation
-- Inheritance
-- Abstraction
-- Polymorphism
 
-#### Encapsulation
+#### 1. Encapsulation
 
 Encapsulation in JAVA is wrapping of code and data together in a single unit. For example - We have Book its data members are name, author, price, etc. and its functionality is to issue, fine, return, open, close. So, here Book is an object which wraps its data and functionality together.
 
 
-#### Inheritance
+#### 2. Inheritance
 
 Inheritance is a mechanism in which one object acquires all the properties and behaviors of its parent object automatically. For example - Book has many categories like Textbook which has features of book as well and some additional features like DOP,version, department, etc. So, here Textbook is a child class which inherits all the features of Book class and some additional features as well. Also there is another class called ReferenceBook which also inherits all the features of Book class and some additional features as well. So, here Textbook and ReferenceBook are child classes and Book is a parent class.
 
 
-#### Abstraction
+#### 3. Abstraction
 
 Abstraction is a process of hiding the implementation details and showing only functionality to the user. For example - We use mobile phones to make calls, send messages, click photos, etc. We don't know the internal processing of calling, sending messages and how images are clicked. So, here mobile phone is an object which provides the functionality to the user to make calls, send messages, click photos, etc. but we don't know the internal processing of all these operations. We achieve abstraction using access modifiers like public, private, protected, etc.
 
-#### Polymorphism
+#### 4. Polymorphism
 
 Polymorphism refers to a programming language's ability to process objects depending on their class. For example - Add method can be used to add two integers, two floats, two strings, etc. So, here Add method is performing different operations on different data types. We achieve polymorphism using method overloading and method overriding.
 
 
-## JAVA Program Execution
+### JAVA Program Compilation & Execution
 
+##### Compilation
 JAVA Source Code(.java) -> Compiler -> Bytecode(.class)
 
+##### Execution
 Bytecode(.class) -> JIT Compiler -> Machine Code

@@ -7,7 +7,7 @@ import TransitionEffect from "@/components/TransitionEffect";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/motion";
 import Image from "next/image";
-
+import img1 from "../../public/images/removed.png";
 
 const quote = {
   initial: {
@@ -133,15 +133,8 @@ const about = () => {
             </motion.p>
           </div>
 
-          
 
-          {/* <div className="flex flex-row justify-center items-center w-full gap-x-10 mx-auto">
-            {services.map((service, index) => (
-              <ServiceCard key={service.title} index={index} {...service} />
-            ))}
-          </div> */}
-
-          <Skills />
+          <Skills img={img1}/>
           <Experience />
           <Education />
         </div>

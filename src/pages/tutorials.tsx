@@ -1,5 +1,3 @@
-"use client";
-
 import getPostMetadata from "@/components/posts/getPostMetadata";
 import Head from "next/head";
 import Link from "next/link";
@@ -20,7 +18,6 @@ const PostContent = (props: any) => {
 
 
 const PostPage = (props: any) => {
-    
 
   return (
     <div className="mt-12">

@@ -34,24 +34,17 @@ Not considered in the tables.
 **Drawbacks of Method-2:** If the second method were used for an overlapping generalisation, some values such as balance would be stored twice unnecessarily. Similarly, if the generalisation were not complete—that is, if some accounts were neither savings nor current accounts—then such accounts could not be represented with the second method.
 
 ### Aggregation 
-Table of the relationship set is made. Attributes includes primary keys of entity set and aggregation set’s entities. Also, add descriptive attribute if any on the relationship.
+Table of the relationship set is made. Attributes includes primary keys of entity set and aggregation sets entities. Also, add descriptive attribute if any on the relationship.
 
 
 
 ### Example
 
 <div class="flex flex-row justify-center items-center">
-    <img
-        src="https://static.javatpoint.com/dbms/images/dbms-reduction-of-er-diagram-into-table.png"
-        alt="ER Model"
-        style="width: 500px; height: 420px; margin-right:20px;"
-    />
-
-    <img
-        src="https://static.javatpoint.com/dbms/images/dbms-reduction-of-er-diagram-into-table2.png"
-        alt="Relational Model"
-        style="width: 500px; height: 420px;"
-    />
+    <img src="https://static.javatpoint.com/dbms/images/dbms-reduction-of-er-diagram-into-table.png" alt="ER Model" style="width: 500px; height: 420px; margin-right:20px;"
+    >
+    <img src="https://static.javatpoint.com/dbms/images/dbms-reduction-of-er-diagram-into-table2.png" alt="Relational Model" style="width: 500px; height: 420px;"
+    >
 </div>
 
 

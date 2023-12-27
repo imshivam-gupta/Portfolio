@@ -1,5 +1,7 @@
 import {motion} from 'framer-motion'
 import { fadeIn } from '../../utils/motion'
+import Image from 'next/image'
+
 
 const quote = {
   initial: {
@@ -33,23 +35,9 @@ const Badge = ({imgsrc}) =>{
   return <img src={imgsrc} alt='badge' className='h-8 inline'/>
 }
 
-const Skill = ({name, x, y}) => {
-  return(
-    <motion.div className='flex items-center justify-center rounded-full font-semibold maindarkbkg text-light py-3 px-6 shadow-dark cursor-pointer absolute
-    dark:text-dark dark:bg-light lg:py-2 lg:px-4 md:text-sm md:py-1.5 md:px-3 xs:bg-transparent xs:dark:bg-transparent xs:text-dark xs:dark:text-light
-    xs:font-bold'
-    whileHover={{scale:1.05}}
-    initial={{x:0,y:0}}
-    whileInView={{x:x, y:y, transition: {duration: 1.5}}}
-    viewport={{once: true}}
-    >
-      {name}
-    </motion.div>
-  )
-}
 
-const Skills = () => {
-  
+const Skills = (props) => {
+
   return (
     <div className='mt-20 w-[80%] mx-auto '>
     
@@ -74,7 +62,7 @@ const Skills = () => {
 
   <div className="mt-4 mb-8">
 
-
+    
     <motion.div
       className="text-secondary text-[17px] w-full leading-[30px] mt-auto mb-4"
       initial={{y:30}}
