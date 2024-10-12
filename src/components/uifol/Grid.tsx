@@ -39,7 +39,7 @@ const Grid = () => {
       </div>
 
         <div className="flex flex-col mx-auto gap-4 items-center w-[73rem] mb-10">
-            <p className="w-full text-left text-xl dark:text-white text-black px-10">Overtime I have worked on and built multiple projects, some during work, some outside. Here's a humble list of those, some of them are open-source. If you're inspired by what you see, don't hesitate to dive into the code and share your ideas for improvement.</p>
+            <p className="w-full text-left text-xl dark:text-white text-black px-10">Overtime I have worked on and built multiple projects, some during work, some outside. Here&apos;s a humble list of those, some of them are open-source. If you&apos;re inspired by what you see, don&apos;t hesitate to dive into the code and share your ideas for improvement.</p>
         </div>
 
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>

@@ -20,8 +20,8 @@ const HireMe = () => {
                     Hire Me as a Freelancer
                 </h1>
                 <p className="text-neutral-500 max-w-lg mx-auto my-2 mb-6 text-lg text-center relative z-10">
-                    Want to hire me as a freelancer? Let's discuss.
-                    Drop your message and let's discuss about your project.
+                    Want to hire me as a freelancer? Let&apos;s discuss.
+                    Drop your message and let&apos;s discuss about your project.
                     </p>
                     <div className="max-w-4xl w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 py-2 md:py-2 shadow-input bg-white dark:bg-black">
                     <form className="my-8" onSubmit={handleSubmit}>

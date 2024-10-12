@@ -55,7 +55,7 @@ const Blog = () => {
 
         <div className="flex flex-col mx-auto gap-4 px-10 w-[73rem]">
             <p className="w-full text-left text-xl dark:text-white text-black">
-            I don't write often, but when I do, it is mostly about my experience building products, here are few of them. If you are interested in reading more, you can find them <LinkPreview url="https://blog.shivamgupta.tech">
+            I don&apos;t write often, but when I do, it is mostly about my experience building products, here are few of them. If you are interested in reading more, you can find them <LinkPreview url="https://blog.shivamgupta.tech">
             <span className="underline">here</span>
             </LinkPreview>
               </p>
