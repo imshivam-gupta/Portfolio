@@ -17,6 +17,86 @@ const SkeletonLoader = () => (
     </div>
 );
 
+const data = [
+    {
+        title: "Dynamic Programming",
+        description: "Learn Dynamic Programming from scratch",
+        image: "/images/dynamic-programming.jpg",
+        position: 1,
+        slug: "dynamic_programming",
+        blogs: [
+            {
+                title: "Introduction to Dynamic Programming",
+                description: "Learn the basics of Dynamic Programming",
+                image: "/images/dynamic-programming.jpg",
+                position: 1,
+                slug: "introduction_to_dynamic_programming",
+            },
+            {
+                title: "Fibonacci Series",
+                description: "Learn about Fibonacci Series in Dynamic Programming",
+                image: "/images/dynamic-programming.jpg",
+                position: 2,
+                slug: "fibonacci_series",
+            },
+            {
+                title: "0/1 Knapsack Problem",
+                description: "Learn about 0/1 Knapsack Problem in Dynamic Programming",
+                image: "/images/dynamic-programming.jpg",
+                position: 3,
+                slug: "knapsack_problem",
+            },
+        ],
+    },
+    {
+        title: "Graph Theory",
+        description: "Learn Graph Theory from scratch",
+        image: "/images/graph-theory.jpg",
+        position: 2,
+        slug: "graph_theory",
+        blogs: [
+            {
+                title: "Introduction to Graph Theory",
+                description: "Learn the basics of Graph Theory",
+                image: "/images/graph-theory.jpg",
+                position: 1,
+                slug: "introduction_to_graph_theory",
+            },
+            {
+                title: "Breadth First Search",
+                description: "Learn about Breadth First Search in Graph Theory",
+                image: "/images/graph-theory.jpg",
+                position: 2,
+                slug: "breadth_first_search",
+            },
+            {
+                title: "Depth First Search",
+                description: "Learn about Depth First Search in Graph Theory",
+                image: "/images/graph-theory.jpg",
+                position: 3,
+                slug: "depth_first_search",
+            },
+        ],
+    }
+];
+
+// Data rendering component
+const RenderData = ({ data }) => {
+    return (
+        <div className="mt-20">
+            {data.map((topic,index) => (
+                 <div
+                 className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 transition duration-200"
+                 key={index}
+             >
+                 <h3 className="text-lg font-semibold text-gray-100">Lesson {index + 1}</h3>
+                 <p className="text-gray-400 mt-2">Introduction to Dynamic Programming</p>
+             </div>
+            ))}
+        </div>
+    );
+};
+
 interface BlogPostProps {
     params: Promise<{
         topic: string; // dynamic parameter from the URL
@@ -71,9 +151,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ params }) => {
         fetchFolderData();
     }, [blogname]);
     
-
-
-
     return (
         <>
             <Head>
@@ -81,14 +158,21 @@ const BlogPost: React.FC<BlogPostProps> = ({ params }) => {
                 <meta name="description" content={`Shivam Gupta's Blog Post on ${blogname}`} />
             </Head>
 
-            <h1 className="text-4xl font-bold text-center mt-20">
+            <h1 className="text-4xl font-bold text-center my-20">
                 {blogname.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
             </h1>
 
             <TracingBeam className="px-4">
-                <div className="mx-auto py-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-8">
+                <h2 className="text-2xl font-bold mb-8">Dynamic Programming</h2>
+                <div className="mx-auto pb-20 grid grid-cols-1 gap-y-4">
                     {[...Array(10)].map((_, index) => (
-                        <BlogCard key={index} />
+                        <div
+                            className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 transition duration-200"
+                            key={index}
+                        >
+                            <h3 className="text-lg font-semibold text-gray-100">Lesson {index + 1}</h3>
+                            <p className="text-gray-400 mt-2">Introduction to Dynamic Programming</p>
+                        </div>
                     ))}
                 </div>
             </TracingBeam>
@@ -96,6 +180,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ params }) => {
             <div className="mt-20">
                 {loading ? <SkeletonLoader /> : <MDX source={markdownContent} />}
             </div>
+
+            <RenderData data={data} />
 
             <div className="mt-20">
                 {/* Render fetched folder data */}
