@@ -65,38 +65,26 @@ const blogBaseUrl = "http://localhost:3000/blog/";
 
 export const projects = [
     {
-        title: "Why Low Level Design Matters?",
+        title: "Algorithm Design",
         description:
-            "Understanding the importance of low level design in software development. Why it matters and how to do it. How to think through the design of a system at a higher level of abstraction.",
-        link: `${blogBaseUrl}lld`,
+            "My journey of learning algorithm design and how it has helped me in problem solving. I have tried to represent my learnings in a simple and easy to understand way.",
+        link: `${blogBaseUrl}algorithm_design`,
     },
     {
-        title: "Why Redis?",
+        title: "System Design",
         description:
-            "A collection of reasons why Redis is a powerful tool for building scalable and performant systems.",
-        link: `${blogBaseUrl}why-redis`,
+            "My journey of learning system design. I keep this blog updated with my latest learning as I progress in my tech journey.",
+        link: `${blogBaseUrl}system_design`,
     },
     {
-        title: "Server Side Rendering vs Static Site Generation",
-        description: "A comparison of server side rendering and static site generation. How they work and when to use them. The trade offs and the benefits.",
-        link: `${blogBaseUrl}server-side-rendering-vs-static-site-generation`,
+        title: "Database Engineering",
+        description: "From Database Management Systems to NoSQL databases, I have covered it all. This blog is a collection of my learnings.",
+        link: `${blogBaseUrl}database_engineering`,
     },
     {
-        title: "Segment Tree",
+        title: "Operating Systems",
         description:
-            "A data structure that allows for efficient range queries and updates. How it works and how to implement it.",
-        link: `${blogBaseUrl}segment-tree`,
-    },
-    {
-        title: "Graph Databases",
-        description:
-            "A comparison of graph databases and relational databases. How they work and when to use them.",
-        link: `${blogBaseUrl}graph-databases`,
-    },
-    {
-        title: "Handling Big Data",
-        description:
-            "A collection of techniques and best practices for handling big data. How to process and analyze large datasets efficiently",
-        link: `${blogBaseUrl}handling-big-data`,
+            "My journey of learning Operating Systems. I have tried to represent my learnings in a simple and easy to understand way.",
+        link: `${blogBaseUrl}operating_systems`,
     },
 ];

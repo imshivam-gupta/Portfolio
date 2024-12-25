@@ -17,14 +17,31 @@ export const FloatingDock = ({
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string, openInNewTab?: boolean }[];
+  items: { title: string; icon: React.ReactNode; href: string; openInNewTab?: boolean }[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} />
-      <FloatingDockMobile items={items} className={mobileClassName} />
+      <button
+        onClick={() => setVisible((prev) => !prev)}
+        className={cn(
+          "fixed bottom-4 right-4 h-12 w-12 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center shadow-lg z-50",
+          visible && "bg-gray-200 dark:bg-neutral-700"
+        )}
+      >
+        <IconLayoutNavbarCollapse className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
+      </button>
+      <AnimatePresence>
+        {visible && (
+          <>
+            <FloatingDockDesktop items={items} className={desktopClassName} />
+            <FloatingDockMobile items={items} className={mobileClassName} />
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
@@ -33,7 +50,7 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string,openInNewTab?: boolean }[];
+  items: { title: string; icon: React.ReactNode; href: string; openInNewTab?: boolean }[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);

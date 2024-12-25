@@ -1,37 +1,38 @@
 "use client";
 import Head from "next/head";
 import Blog from "@/sections/Blog";
-import { getBlob, getDownloadURL, ref } from "firebase/storage";
+import { ref, listAll } from "firebase/storage";
 import { storage } from "@/lib/firebaseConfig";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+interface Topic {
+  name: string;
+  originalName: string;
+  path: string;
+}
 
 export default function Home() {
+  const [topicNames,setTopicNames] = useState<Topic[]>([]);
   useEffect(() => {
-    const fetchMarkdown = async () => {
+    const fetchBlogNames = async () => {
       try {
-        // Create a reference to the markdown file
-        const mdFileRef = ref(storage, "gs://portfolio-a921f.appspot.com/blogs/lld.md");
+        const coursesRef = ref(storage, "courses/");
+        const topicsResult = await listAll(coursesRef);
 
-        // Fetch the blob (binary data)
-        const contentBlob = await getBlob(mdFileRef);
-        console.log("Markdown Blob:", contentBlob);
+        const topics = topicsResult.prefixes.map((topicRef) => ({
+          name: topicRef.name.replace(/_/g, " "), 
+          originalName: topicRef.name, 
+          path: topicRef.fullPath,
+        }));
 
-        // Use FileReader to read the blob as text
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          const markdownContent = reader.result;
-          console.log("Markdown File Content:", markdownContent);
-        };
-        
-        // Read the blob as text
-        reader.readAsText(contentBlob);
-        
+        topics.sort((a, b) => a.name.localeCompare(b.name));
+        setTopicNames(topics);
       } catch (error) {
-        console.error("Error fetching markdown file:", error);
+        console.error("Error fetching blog names:", error);
       }
     };
 
-    fetchMarkdown();
+    fetchBlogNames();
   }, []);
 
   return (
@@ -45,7 +46,7 @@ export default function Home() {
         />
       </Head>
 
-      <Blog />
+      <Blog topics={topicNames}/>
     </>
   );
 }

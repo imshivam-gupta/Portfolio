@@ -86,7 +86,7 @@ export const BLOG_TITLE_CLASSES =
 export const BLOG_TITLE = "Blogs";
 export const BLOG_PARAGRAPH_CLASSES = "w-full text-center text-xl dark:text-white text-black";
 export const BLOG_PARAGRAPH_TEXT =
-  "I don't write often, but when I do, it is mostly about my experience building products, here are few of them.";
+  "I don't write often, but when I do, it is mostly about my experience building products, here are few of them. All the blogs are organised by topics";
 export const BLOG_PARAGRAPH_LINK_TEXT = "here";
 export const BLOG_PARAGRAPH_LINK_URL = "https://profile.shivamgupta.tech/blogs";
 export const BLOG_HOVER_WRAPPER_CLASSES = "mx-auto px-32 mt-2";
