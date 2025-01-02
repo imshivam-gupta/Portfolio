@@ -1,14 +1,16 @@
 import '@/styles/globals.css'
 import Head from 'next/head';
 import { useRouter } from 'next/router'
-import Hero from '@/components/uifol/Hero';
+// import Hero from '@/components/uifol/Hero';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import { IconBrandGithub, IconBrandX, IconBriefcase, IconExchange, IconFileText, IconHome, IconMessage, IconNewSection, IconTerminal2 } from '@tabler/icons-react';
 import Grid from '@/components/uifol/Grid';
 import Work from '@/components/uifol/Work';
 import Blog from '@/components/uifol/Blog';
 import HireMe from '@/components/uifol/HireMe';
-
+import { HeroSection } from '@/components/uifol/Hero';
+import {Navbar} from '@/components/navbar';
+import { ThemeProvider } from "@/components/theme-provider"
 
 const links = [
   {
@@ -52,14 +54,14 @@ const links = [
     icon: (
       <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "#",
+    href: "https://x.com/shivam1176",
   },
   {
     title: "GitHub",
     icon: (
       <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "#",
+    href: "https://github.com/imshivam-gupta",
   },
 ];
 
@@ -122,18 +124,26 @@ export default function App() {
 
   return (
     <div>
+      <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" key="desc"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Navbar />
    
       <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto  min-h-screen">
       <div className="max-w-[100vw] w-full">
 
-        <Hero />
+        <HeroSection />
         <Grid />
         <Work />
-        <Blog />
+        {/* <Blog /> */}
         <HireMe />
 
         <FloatingDock 
@@ -141,6 +151,7 @@ export default function App() {
           items={links} />
       </div>
     </main>
+    </ThemeProvider>
     </div>  
   )
 }
