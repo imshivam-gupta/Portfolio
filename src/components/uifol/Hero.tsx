@@ -144,7 +144,7 @@ export function HeroSection() {
             className="space-y-2"
           >
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              <span className="text-primary">Hello, I'm</span>{" "}
+              <span className="text-primary">Hello, I&apos;m</span>{" "}
               <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
                 Shivam Gupta
               </span>
