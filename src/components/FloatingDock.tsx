@@ -21,7 +21,7 @@ export const FloatingDock = ({
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   return (
     <>

@@ -84,14 +84,21 @@ const data = [
 const RenderData = ({ data }) => {
     return (
         <div className="mt-20">
-            {data.map((topic,index) => (
-                 <div
-                 className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 transition duration-200"
-                 key={index}
-             >
-                 <h3 className="text-lg font-semibold text-gray-100">Lesson {index + 1}</h3>
-                 <p className="text-gray-400 mt-2">Introduction to Dynamic Programming</p>
-             </div>
+            {data.map((topic) => (
+                <div key={topic.slug} className="mb-12">
+                    <h2 className="text-2xl font-bold mb-4">{topic.title}</h2>
+                    <p className="text-gray-500">{topic.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                        {topic.blogs.map((blog) => (
+                            <BlogCard
+                                key={blog.slug}
+                                title={blog.title}
+                                description={blog.description}
+                                image={blog.image}
+                            />
+                        ))}
+                    </div>
+                </div>
             ))}
         </div>
     );
@@ -152,13 +159,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ params }) => {
     }, [blogname]);
     
     return (
-        <>
+        <div className="dark:bg-black bg-white dark:bg-grid-white/[0.05] ">
             <Head>
                 <title>{blogname} | Shivam Gupta Blog</title>
                 <meta name="description" content={`Shivam Gupta's Blog Post on ${blogname}`} />
             </Head>
 
-            <h1 className="text-4xl font-bold text-center my-20">
+            <h1 className="text-4xl font-bold text-center py-20">
                 {blogname.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
             </h1>
 
@@ -187,7 +194,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ params }) => {
                 {/* Render fetched folder data */}
                 <pre>{JSON.stringify(foldersData, null, 2)}</pre>
             </div>
-        </>
+        </div>
     );
 };
 
